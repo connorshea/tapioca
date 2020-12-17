@@ -548,7 +548,10 @@ class Tapioca::Compilers::SymbolTableCompilerSpec < Minitest::HooksSpec
         module Toto::Foo
         end
 
-        class Toto::Foo::Bar
+        class Toto::Foo::Bar < ::Toto::Baz
+        end
+
+        class Toto::Baz
         end
       RBI
 
@@ -581,6 +584,8 @@ class Tapioca::Compilers::SymbolTableCompilerSpec < Minitest::HooksSpec
 
         class Foo::Bar < ::Numeric
         end
+
+        Foo::Baz = Foo::Bar
       RBI
 
       assert_equal(output, compile)
