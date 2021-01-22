@@ -32,7 +32,7 @@ module Tapioca
 
         definition
           .resolve
-          .materialize(specs)
+          .materialize(specs, [])
           .map { |spec| Gem.new(spec) }
           .reject { |gem| gem.ignore?(dir) }
           .uniq(&:rbi_file_name)
